@@ -21,7 +21,10 @@ sleep(5)
 
 driver.find_element(By.XPATH, '//*[@id="onesignal-slidedown-cancel-button"]').click()
 
-driver.find_element(By.CSS_SELECTOR, '#pageWrapper > div > header > section.nav-top > article.nav-group.min-width-400.user-part.mozzart_sr > section > section > div > div.bottom-part > span').click()
+try:
+    driver.find_element(By.CSS_SELECTOR, '#pageWrapper > div > header > section.nav-top > article.nav-group.min-width-400.user-part.mozzart_sr > section > section > div > div.bottom-part > span').click()
+except:
+
 
 driver.find_element(By.XPATH, '//*[@id="pageWrapper"]/section/div/p[4]').click()
 
