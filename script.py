@@ -31,7 +31,19 @@ driver.find_element(By.XPATH, '//*[@id="username"]').send_keys(username)
 driver.find_element(By.XPATH, '//*[@id="password"]').send_keys(password)
 
 driver.find_element(By.CSS_SELECTOR, '#pageWrapper > div > header > section.nav-top > article.nav-group.min-width-400.user-part.mozzart_sr > section > article > div:nth-child(2) > div > div > div > div.modal__body > form > button').click()
-
+sleep(4)
 driver.find_element(By.XPATH, '//*[@id="pageWrapper"]/section/div/div/div/div/div[1]/div/div/div/div[3]').click()
 
-breakpoint()
+# breakpoint()
+while True:
+    message_cards = driver.find_elements(By.CLASS_NAME, "MozzAppMessageCard")
+    for message_card in message_cards:
+        free_spins_buttons = message_card.find_elements(By.CLASS_NAME, "MozzAppMessageCard__right--free")
+        for i, fsb in enumerate(free_spins_buttons):
+            try:
+                free_spins_buttons[i].click()
+                game = message_card.find_element(By.CLASS_NAME, "MozzAppFreeCard__header").text
+            except:
+                pass
+            sleep(.5)
+    sleep(10)
